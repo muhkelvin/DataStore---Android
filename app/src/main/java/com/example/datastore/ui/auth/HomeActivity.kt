@@ -1,4 +1,4 @@
-package com.example.datastore
+package com.example.datastore.ui.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -32,12 +32,12 @@ class HomeActivity : AppCompatActivity() {
 
          binding.btLogout.setOnClickListener {
              viewModel.logout()
-             val intent = Intent(this,LoginActivity::class.java)
+             val intent = Intent(this, LoginActivity::class.java)
              startActivity(intent)
          }
 
         binding.btUpdate.setOnClickListener {
-            val intent = Intent(this,UpdateActivity::class.java)
+            val intent = Intent(this, UpdateActivity::class.java)
             startActivity(intent)
         }
 

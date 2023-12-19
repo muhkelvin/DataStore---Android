@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Datastore"
         tools:targetApi="31">
         <activity
-            android:name=".UpdateActivity"
+            android:name=".ui.home.GiphyActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.auth.UpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,16 +28,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.auth.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.auth.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="false"></activity>
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.auth.MainActivity"
             android:exported="false" />
     </application>
 

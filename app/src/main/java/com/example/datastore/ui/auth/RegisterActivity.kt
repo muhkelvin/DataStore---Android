@@ -1,11 +1,10 @@
-package com.example.datastore
+package com.example.datastore.ui.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.datastore.auth.AuthManajer
 import com.example.datastore.auth.AuthRepository
 import com.example.datastore.auth.AuthViewModel

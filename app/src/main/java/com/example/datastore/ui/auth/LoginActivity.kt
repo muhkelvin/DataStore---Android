@@ -1,4 +1,4 @@
-package com.example.datastore
+package com.example.datastore.ui.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         binding.tvRegister.setOnClickListener {
-            val action = Intent(this,RegisterActivity::class.java)
+            val action = Intent(this, RegisterActivity::class.java)
             startActivity(action)
         }
     }
