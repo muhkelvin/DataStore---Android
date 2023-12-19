@@ -13,10 +13,13 @@ class AuthRepository(private val authdataStore:AuthManajer) {
         authdataStore.setCredentials(email,username,password)
     }
 
-    suspend fun updateCredentials(email: String, username: String, password: String) {
-        authdataStore.updateCredentials(email, username, password)
-    }
+//    suspend fun updateCredentials(email: String, username: String, password: String) {
+//        authdataStore.updateCredentials(email, username, password)
+//    }
 
+    suspend fun updateIdentitas(nama:String,tanggal:String,alamat:String){
+        authdataStore.updateIdentitas(nama,tanggal,alamat)
+    }
     suspend fun login(email: String, password: String): Boolean {
         return authdataStore.login(email, password)
     }

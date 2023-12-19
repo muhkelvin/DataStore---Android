@@ -35,16 +35,22 @@ class RegisterActivity : AppCompatActivity() {
             val valueUsername = binding.etUsername.text.toString()
             val valueEmail = binding.etEmail.text.toString()
             val valuePassword = binding.etPassword.text.toString()
+            val valueKonfirmasi = binding.etKonfirmasi.text.toString()
 
-            if (valueEmail.isNotEmpty() && valueUsername.isNotEmpty() && valuePassword.isNotEmpty()){
-               viewModel.setUserCredentials(valueUsername,valueEmail,valuePassword)
-                val intent = Intent(this,LoginActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else{
-                Toast.makeText(this, "Email dan Username harus diisi", Toast.LENGTH_SHORT).show()
+            if (valueEmail.isNotEmpty() && valueUsername.isNotEmpty() && valuePassword.isNotEmpty() && valueKonfirmasi.isNotEmpty()){
+                if (valuePassword == valueKonfirmasi) {
+                    viewModel.setUserCredentials(valueUsername, valueEmail, valuePassword)
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Password dan konfirmasi password harus sama", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Email, Username, Password, dan Konfirmasi harus diisi", Toast.LENGTH_SHORT).show()
             }
         }
+
 
 
     }

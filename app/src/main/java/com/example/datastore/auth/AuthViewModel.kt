@@ -31,13 +31,9 @@ class AuthViewModel(private val repository: AuthRepository):ViewModel() {
 //        }
 //    }
 
-    fun updateCredentials(email: String?, username: String?, password: String?) {
+    fun updateIdentitas(nama:String,tanggal:String,alamat:String){
         viewModelScope.launch {
-            val safeEmail = email ?: ""
-            val safeUsername = username ?: ""
-            val safePassword = password ?: ""
-
-            repository.updateCredentials(safeEmail, safeUsername, safePassword)
+            repository.updateIdentitas(nama,tanggal,alamat)
         }
     }
 

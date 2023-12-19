@@ -35,5 +35,16 @@ class HomeActivity : AppCompatActivity() {
              val intent = Intent(this,LoginActivity::class.java)
              startActivity(intent)
          }
+
+        binding.btUpdate.setOnClickListener {
+            val intent = Intent(this,UpdateActivity::class.java)
+            startActivity(intent)
+        }
+
+        viewModel.userCredential.observe(this) { data ->
+            binding.tvNama.text = "Data telah Dirubah : ${data.nama}"
+            binding.tanggal.text = "Data telah Dirubah : ${data.tanggal}"
+            binding.alamat.text = "Data telah Dirubah : ${data.alamat}"
+        }
     }
 }

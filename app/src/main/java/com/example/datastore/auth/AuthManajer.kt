@@ -16,6 +16,9 @@ class AuthManajer(private val dataStore: DataStore<Preferences>) {
         val KEY_EMAIL = stringPreferencesKey("KEY_EMAIL")
         val KEY_USERNAME = stringPreferencesKey("KEY_USERNAME")
         val KEY_PASSWORD = stringPreferencesKey("KEY_PASSWORD")
+        val KEY_NAMA_LENGKAP = stringPreferencesKey("KEY_NAMA_LENGKAP")
+        val KEY_TANGGAL_LAHIR = stringPreferencesKey("KEY_TANGGAL_LAHIR")
+        val KEY_ALAMAT = stringPreferencesKey("KEY_ALAMAT")
 
         @Volatile
         private var instance: AuthManajer? = null
@@ -26,16 +29,19 @@ class AuthManajer(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    data class UserCredentials(val username:String,val email:String,val password:String)
+    data class UserCredentials(val username:String,val email:String,val password:String,val nama: String,val tanggal: String, val alamat: String)
 
-    fun getUserCredential(): Flow<UserCredentials>{
-        return dataStore.data.map {preference ->
+     fun getUserCredential(): Flow<UserCredentials> {
+        return dataStore.data.map { preferences ->
             UserCredentials(
-                preference[KEY_EMAIL].orEmpty(),
-                preference[KEY_USERNAME].orEmpty(),
-                preference[KEY_PASSWORD].orEmpty(),
-            )
+                preferences[KEY_EMAIL].orEmpty(),
+                preferences[KEY_USERNAME].orEmpty(),
+                preferences[KEY_PASSWORD].orEmpty(),
+                preferences[KEY_NAMA_LENGKAP].orEmpty(),
+                preferences[KEY_TANGGAL_LAHIR].orEmpty(),
+                preferences[KEY_ALAMAT].orEmpty()
 
+            )
         }
     }
 
@@ -48,11 +54,11 @@ class AuthManajer(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    suspend fun updateCredentials(email: String,username:String,password: String){
+    suspend fun updateIdentitas(nama:String,tanggal:String,alamat:String){
         dataStore.edit {preference ->
-            preference[KEY_EMAIL]= email
-            preference[KEY_USERNAME] = username
-            preference[KEY_PASSWORD] = password
+            preference[KEY_NAMA_LENGKAP]= nama
+            preference[KEY_TANGGAL_LAHIR]= tanggal
+            preference[KEY_ALAMAT]= alamat
         }
     }
 
