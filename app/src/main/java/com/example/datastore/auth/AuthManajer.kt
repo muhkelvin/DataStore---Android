@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 
 
@@ -55,10 +56,20 @@ class AuthManajer(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    suspend fun login(email:String,password: String):Boolean{
-        val userCredentials = getUserCredential().first()
-        return userCredentials.email == email && userCredentials.password == password
+
+    suspend fun loginStatus(): Boolean {
+        val userCredentials = getUserCredential().firstOrNull()!!
+        return userCredentials.email.isNotEmpty() && userCredentials.password.isNotEmpty()
     }
+
+
+    suspend fun login(email: String, password: String): Boolean {
+        val userCredentials = getUserCredential().firstOrNull()
+
+        // Periksa apakah userCredentials tidak null sebelum membandingkan
+        return userCredentials?.email == email && userCredentials.password == password
+    }
+
 
     suspend fun logout(){
         dataStore.edit {preferences ->
