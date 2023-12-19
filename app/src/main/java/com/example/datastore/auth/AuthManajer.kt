@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 
@@ -45,5 +46,27 @@ class AuthManajer(private val dataStore: DataStore<Preferences>) {
 
         }
     }
+
+    suspend fun updateCredentials(email: String,username:String,password: String){
+        dataStore.edit {preference ->
+            preference[KEY_EMAIL]= email
+            preference[KEY_USERNAME] = username
+            preference[KEY_PASSWORD] = password
+        }
+    }
+
+    suspend fun login(email:String,password: String):Boolean{
+        val userCredentials = getUserCredential().first()
+        return userCredentials.email == email && userCredentials.password == password
+    }
+
+    suspend fun logout(){
+        dataStore.edit {preferences ->
+            preferences[KEY_EMAIL] = ""
+            preferences[KEY_USERNAME] = ""
+            preferences[KEY_PASSWORD] = ""
+        }
+    }
+
 }
 

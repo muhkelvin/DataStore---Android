@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AuthViewModel(private val repository: AuthRepository):ViewModel() {
@@ -19,9 +21,37 @@ class AuthViewModel(private val repository: AuthRepository):ViewModel() {
             val safeUsername = username ?: ""
             val safePassword = password ?: ""
 
-            repository.setUserCredential(safeEmail, safeUsername, safePassword)
+            repository.setUserCredentials(safeEmail, safeUsername, safePassword)
         }
     }
+
+//    fun setUserCredentials(email:String,username:String,password:String){
+//        viewModelScope.launch {
+//            repository.setUserCredential(email, username, password)
+//        }
+//    }
+
+    fun updateCredentials(email: String?, username: String?, password: String?) {
+        viewModelScope.launch {
+            val safeEmail = email ?: ""
+            val safeUsername = username ?: ""
+            val safePassword = password ?: ""
+
+            repository.updateCredentials(safeEmail, safeUsername, safePassword)
+        }
+    }
+
+    fun login(email: String, password: String) = liveData(Dispatchers.IO) {
+        val success = repository.login(email, password)
+        emit(success)
+    }
+
+    fun logout() {
+        viewModelScope.launch {
+            repository.logout()
+        }
+    }
+
 
     class Factory(private val repository: AuthRepository):ViewModelProvider.Factory{
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
