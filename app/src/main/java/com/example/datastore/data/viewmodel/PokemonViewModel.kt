@@ -22,18 +22,18 @@ class PokemonViewModel(private val repository: PokemonRepository) : ViewModel() 
     private val _errorLiveData = MutableLiveData<String>()
 
     // Fungsi untuk mengambil data Pokemon
-    fun fetchData() {
-        viewModelScope.launch {
-            try {
-                // Panggil fungsi repository di sini
-                val response = repository.getPokemon()
-                // Lakukan sesuatu dengan respons jika perlu
-            } catch (e: Exception) {
-                Log.e("PokemonViewModel", "Terjadi kesalahan: ${e.message}")
-                _errorLiveData.value = "Terjadi kesalahan saat mengambil data Pokemon"
-            }
-        }
-    }
+//    fun fetchData() {
+//        viewModelScope.launch {
+//            try {
+//                // Panggil fungsi repository di sini
+//                val response = repository.getPokemon()
+//                // Lakukan sesuatu dengan respons jika perlu
+//            } catch (e: Exception) {
+//                Log.e("PokemonViewModel", "Terjadi kesalahan: ${e.message}")
+//                _errorLiveData.value = "Terjadi kesalahan saat mengambil data Pokemon"
+//            }
+//        }
+//    }
 
     // Factory untuk ViewModel
     class Factory(private val repository: PokemonRepository) : ViewModelProvider.Factory {

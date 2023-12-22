@@ -9,7 +9,7 @@ import rizkyfadilah.binar.synrgy6.android.learning.learningchapter5.tmdb.data.mo
 
 interface TMDBApi {
     @GET("discover/movie")
-    suspend fun getMovies(): Response<MovieResponse.Results>
+    suspend fun getMovies(): Response<MovieResponse>
 
     @GET("movie/{movie_id}")
     suspend fun getMovieDetail(

@@ -5,17 +5,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-/**
- * rizkyfadilah.binar.synrgy6.android.learning.learningchapter5.tmdb
- *
- * Created by Rizky Fadilah on 10/11/23.
- * https://github.com/rizkyfadilah
- *
- */
 
 object TMDBRetrofitBuilder {
 
     private const val BASE_URL = "https://api.themoviedb.org/3/"
+    const val BASE_URL_IMG = "https://image.tmdb.org/t/p/w500"
     const val ACCESS_TOKEN =
         "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MmU4ZmIwNTI3MzU0NGFlMTdjY2ZmMTRkOTk4ZDUzNSIsInN1YiI6IjY1NGUyMTQxNDFhNTYxMzM2YzVmYzhmNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.y-e1UReMT5_FUTVtvtffoITMGz0og-si0FHxzz1XMLE"
 

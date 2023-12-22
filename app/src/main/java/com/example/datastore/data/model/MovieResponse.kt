@@ -2,14 +2,6 @@ package rizkyfadilah.binar.synrgy6.android.learning.learningchapter5.tmdb.data.m
 
 import com.google.gson.annotations.SerializedName
 
-/**
- * rizkyfadilah.binar.synrgy6.android.learning.learningchapter5.tmdb.model
- *
- * Created by Rizky Fadilah on 10/11/23.
- * https://github.com/rizkyfadilah
- *
- */
-
 data class MovieResponse(
     @SerializedName("dates") var dates: Dates,
     @SerializedName("page") var page: Int,

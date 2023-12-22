@@ -65,6 +65,6 @@ class PokemonActivity : AppCompatActivity() {
         })
 
         // Memanggil fungsi fetchData() di ViewModel untuk mendapatkan data
-        viewModel.fetchData()
+//        viewModel.fetchData()
     }
 }
