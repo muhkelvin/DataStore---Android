@@ -16,25 +16,29 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.home.TmdbDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.home.PokemonActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ui.networking.PokemonActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".ui.home.PostActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.home.TmdbActivity"
-            android:exported="true">
+            android:name=".ui.home.ReqresActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.home.TmdbDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.PokemonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.networking.PokemonActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.home.PostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.TmdbActivity"
+            android:exported="false">
         </activity>
         <activity
             android:name=".ui.home.GiphyActivity"
